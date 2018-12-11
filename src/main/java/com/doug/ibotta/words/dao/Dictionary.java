@@ -14,4 +14,7 @@ public interface Dictionary extends CrudRepository<Word, Integer> {
 
     @Transactional
     Long deleteByWord(String word);
+
+    @Transactional
+    Long deleteByWordAlphabetical(String wordAlphabetical);
 }

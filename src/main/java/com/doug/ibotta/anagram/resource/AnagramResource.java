@@ -15,7 +15,7 @@ public class AnagramResource {
     @Autowired
     AnagramService anagramService;
 
-    @GetMapping("/{word}")
+    @GetMapping("/{word}.json")
     public ResponseEntity getAnagramWordList(
             @PathVariable @NotNull  String word,
             @RequestParam(required = false) Integer limit,
@@ -27,11 +27,13 @@ public class AnagramResource {
         return ResponseEntity.ok(anagrams);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{word}")
     public ResponseEntity deleteWordAndAnagrams(
             @PathVariable String word
     )
     {
+        anagramService.deleteWordAndAnagrams(word);
 
+        return ResponseEntity.noContent().build();
     }
 }

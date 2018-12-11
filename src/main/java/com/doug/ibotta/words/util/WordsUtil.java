@@ -13,7 +13,7 @@ public class WordsUtil {
         char[] wordChars = word.toCharArray();
         Arrays.sort(wordChars);
 
-        return Arrays.toString(wordChars).toLowerCase();
+        return new String(wordChars).toLowerCase();
     }
 
     public static Word generateDictionaryWord(String word)

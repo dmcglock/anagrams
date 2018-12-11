@@ -21,7 +21,7 @@ public class WordsResource {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    @DeleteMapping("/words/{word}")
+    @DeleteMapping("/words/{word}.json")
     public ResponseEntity deleteWordFromDictionary(
             @PathVariable String word
     )

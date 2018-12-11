@@ -32,5 +32,11 @@ public class AnagramService {
         return anagram;
     }
 
-    
+    public void deleteWordAndAnagrams(String word)
+    {
+        String alphabeticalWord = WordsUtil.sortLettersOfWord(word);
+        dictionary.deleteByWordAlphabetical(alphabeticalWord);
+    }
+
+
 }
