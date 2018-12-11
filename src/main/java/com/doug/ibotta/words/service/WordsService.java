@@ -27,23 +27,13 @@ public class WordsService {
         }
     }
 
-//    private Word generateDictionaryWord(String word) {
-//
-//    }
-
-    public Anagram getAnagramsForWord(String word, Integer limit, Boolean isProperNoun)
+    public void deleteWordFromDictionary(String word)
     {
-        Anagram anagram = new Anagram();
-        String alphabeticalWord = WordsUtil.sortLettersOfWord(word);
-        List<Word> anagrams = dictonary.findByWordAlphabetical(alphabeticalWord);
+        dictonary.deleteByWord(word);
+    }
 
-        List<String> anagramWords = anagrams.stream()
-                .map(Word::getWord)
-                .filter(storedWord -> !storedWord.equals(word))
-                .collect(Collectors.toList());
-
-        anagram.setAnagrams(anagramWords);
-
-        return anagram;
+    public void deleteAllWordsFromDictionary()
+    {
+        dictonary.deleteAll();
     }
 }
