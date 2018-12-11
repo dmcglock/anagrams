@@ -20,9 +20,15 @@ public class WordsUtil {
     {
         Word dictionaryWord = new Word();
         String alpahabeticalLetters = sortLettersOfWord(word);
+        dictionaryWord.setProperNoun(isWordProperNoun(word));
         dictionaryWord.setWord(word);
         dictionaryWord.setWordAlphabetical(alpahabeticalLetters);
 
         return dictionaryWord;
+    }
+
+    private static boolean isWordProperNoun(String word)
+    {
+        return Character.isUpperCase(word.charAt(0));
     }
 }

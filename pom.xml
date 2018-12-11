@@ -30,12 +30,6 @@
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 
-		<!-- starter security... probably wont need but thats okay -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
-
 		<!-- needed for mvc view -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

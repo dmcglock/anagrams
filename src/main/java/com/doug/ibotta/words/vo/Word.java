@@ -14,6 +14,8 @@ public class Word {
 
     private String wordAlphabetical;
 
+    private boolean isProperNoun;
+
     public String getWord() {
         return word;
     }
@@ -28,5 +30,22 @@ public class Word {
 
     public void setWordAlphabetical(String wordAlphabetical) {
         this.wordAlphabetical = wordAlphabetical;
+    }
+
+    public boolean isProperNoun() {
+        return isProperNoun;
+    }
+
+    public void setProperNoun(boolean properNoun) {
+        isProperNoun = properNoun;
+    }
+
+    @Override
+    public String toString() {
+        return "Word{" +
+                "word='" + word + '\'' +
+                ", wordAlphabetical='" + wordAlphabetical + '\'' +
+                ", isProperNoun=" + isProperNoun +
+                '}';
     }
 }

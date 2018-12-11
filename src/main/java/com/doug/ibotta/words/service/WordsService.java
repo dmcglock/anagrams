@@ -1,5 +1,6 @@
 package com.doug.ibotta.words.service;
 
+import com.doug.ibotta.anagram.dto.Anagram;
 import com.doug.ibotta.words.dao.Dictionary;
 import com.doug.ibotta.words.util.WordsUtil;
 import com.doug.ibotta.words.vo.Word;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class WordsService {
@@ -19,19 +21,29 @@ public class WordsService {
     {
         for(String word : words)
         {
+
             Word dictionaryWord = WordsUtil.generateDictionaryWord(word);
             dictonary.save(dictionaryWord);
         }
     }
 
-    private Word generateDictionaryWord(String word) {
+//    private Word generateDictionaryWord(String word) {
+//
+//    }
 
-    }
-
-    public List<String> getAnagramsForWord(String word, Integer limit)
+    public Anagram getAnagramsForWord(String word, Integer limit, Boolean isProperNoun)
     {
-        String sortedWord = WordsUtil.sortLettersOfWord(word);
+        Anagram anagram = new Anagram();
+        String alphabeticalWord = WordsUtil.sortLettersOfWord(word);
+        List<Word> anagrams = dictonary.findByWordAlphabetical(alphabeticalWord);
 
-        return new ArrayList<String>();
+        List<String> anagramWords = anagrams.stream()
+                .map(Word::getWord)
+                .filter(storedWord -> !storedWord.equals(word))
+                .collect(Collectors.toList());
+
+        anagram.setAnagrams(anagramWords);
+
+        return anagram;
     }
 }
