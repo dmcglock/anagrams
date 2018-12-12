@@ -44,7 +44,7 @@ public class WordsService {
         dictonary.deleteAll();
     }
 
-    public WordCountDto calculateWordMetrics(Boolean includeProperNouns)
+    public WordCountDto calculateWordStatistics(Boolean includeProperNouns)
     {
         List<String> allWords;
         if(includeProperNouns != null && includeProperNouns)
@@ -55,6 +55,6 @@ public class WordsService {
             allWords = dictonary.selectAllWords();
         }
 
-       return wordCalculator.findWordMetrics(allWords);
+       return wordCalculator.findWordStatistics(allWords);
     }
 }

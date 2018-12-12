@@ -1,19 +1,16 @@
 package com.doug.ibotta.words.util;
 
 import com.doug.ibotta.words.dto.WordCountDto;
-import com.doug.ibotta.words.vo.Word;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
 import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.DoubleStream;
 
 @Service
 public class WordCalculator {
 
-    public WordCountDto findWordMetrics(List<String> allWords)
+    public WordCountDto findWordStatistics(List<String> allWords)
     {
         WordCountDto wordCountDto = new WordCountDto();
         List<Integer> sortedWordLengths =

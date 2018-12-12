@@ -47,7 +47,7 @@ public class WordsResource {
             @RequestParam(required = false) Boolean includeProperNouns
     )
     {
-        WordCountDto wordCountDto = wordsService.calculateWordMetrics(includeProperNouns);
+        WordCountDto wordCountDto = wordsService.calculateWordStatistics(includeProperNouns);
         return ResponseEntity.ok(wordCountDto);
     }
 

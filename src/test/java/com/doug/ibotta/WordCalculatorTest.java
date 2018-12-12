@@ -2,10 +2,7 @@ package com.doug.ibotta;
 
 import com.doug.ibotta.words.dto.WordCountDto;
 import com.doug.ibotta.words.util.WordCalculator;
-import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +12,7 @@ public class WordCalculatorTest {
     WordCalculator wordCalculator = new WordCalculator();
 
     @Test
-    public void findWordMetricsSimpleTest()
+    public void findWordStatisticsSimpleTest()
     {
         //given
         List<String> wordList = new ArrayList<>();
@@ -23,7 +20,7 @@ public class WordCalculatorTest {
         wordList.add("dare");
 
         //when
-        WordCountDto wordCountDto = wordCalculator.findWordMetrics(wordList);
+        WordCountDto wordCountDto = wordCalculator.findWordStatistics(wordList);
 
         //then
         assert wordCountDto.getAverageWordLength() == 4;
@@ -34,7 +31,7 @@ public class WordCalculatorTest {
     }
 
     @Test
-    public void findWordMetrics()
+    public void findWordStatistics()
     {
         //given
         List<String> wordList = new ArrayList<>();
@@ -44,7 +41,7 @@ public class WordCalculatorTest {
         wordList.add("tears");
 
         //when
-        WordCountDto wordCountDto = wordCalculator.findWordMetrics(wordList);
+        WordCountDto wordCountDto = wordCalculator.findWordStatistics(wordList);
 
         //then
         assert wordCountDto.getAverageWordLength() == 4.5;
