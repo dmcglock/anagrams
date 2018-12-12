@@ -13,6 +13,12 @@ public interface Dictionary extends CrudRepository<Word, Integer> {
 
     List<Word> findByWordAlphabeticalAndWordNotIn(String wordAlphabetical, String word);
 
+    @Query("select word from Word")
+    List<String> selectAllWords();
+
+    @Query("select word from Word where isProperNoun = true")
+    List<String> selectAllProperNouns();
+
     @Transactional
     Long deleteByWord(String word);
 

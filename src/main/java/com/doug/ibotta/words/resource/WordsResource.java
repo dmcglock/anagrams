@@ -1,5 +1,6 @@
 package com.doug.ibotta.words.resource;
 
+import com.doug.ibotta.words.dto.WordCountDto;
 import com.doug.ibotta.words.dto.WordsDto;
 import com.doug.ibotta.words.service.WordsService;
 import com.doug.ibotta.words.vo.Word;
@@ -39,6 +40,15 @@ public class WordsResource {
         wordsService.deleteAllWordsFromDictionary();
 
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/count-words")
+    public ResponseEntity getCountOfWords(
+            @RequestParam(required = false) Boolean includeProperNouns
+    )
+    {
+        WordCountDto wordCountDto = wordsService.calculateWordMetrics(includeProperNouns);
+        return ResponseEntity.ok(wordCountDto);
     }
 
 }

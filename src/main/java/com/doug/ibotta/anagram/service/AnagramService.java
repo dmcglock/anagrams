@@ -1,6 +1,7 @@
 package com.doug.ibotta.anagram.service;
 
 import com.doug.ibotta.anagram.dto.Anagram;
+import com.doug.ibotta.anagram.dto.AnagramCheckerDto;
 import com.doug.ibotta.words.dao.Dictionary;
 import com.doug.ibotta.words.util.WordsUtil;
 import com.doug.ibotta.words.vo.Word;
@@ -55,6 +56,20 @@ public class AnagramService {
                 .limit(limit == null ? anagramWords.size() : limit)
                 .map(Word::getWord)
                 .collect(Collectors.toList());
+    }
+
+    public AnagramCheckerDto checkIfWordsAreAnagrams(String wordOne, String wordTwo)
+    {
+        List<String> words = new ArrayList<String>();
+        words.add(wordOne);
+        words.add(wordTwo);
+
+        String sortedWordOne = WordsUtil.sortLettersOfWord(wordOne);
+        String sortedWordTwo = WordsUtil.sortLettersOfWord(wordTwo);
+
+        Boolean areAnagrams = sortedWordOne.equals(sortedWordTwo);
+
+        return new AnagramCheckerDto(words, areAnagrams);
     }
 
 

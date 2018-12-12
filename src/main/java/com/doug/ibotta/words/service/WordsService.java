@@ -1,6 +1,8 @@
 package com.doug.ibotta.words.service;
 
 import com.doug.ibotta.words.dao.Dictionary;
+import com.doug.ibotta.words.dto.WordCountDto;
+import com.doug.ibotta.words.util.WordCalculator;
 import com.doug.ibotta.words.util.WordsUtil;
 import com.doug.ibotta.words.vo.Word;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,9 @@ public class WordsService {
 
     @Autowired
     Dictionary dictonary;
+
+    @Autowired
+    WordCalculator wordCalculator;
 
     public List<Word> addWordsToDictionary(List<String> words)
     {
@@ -37,5 +42,19 @@ public class WordsService {
     public void deleteAllWordsFromDictionary()
     {
         dictonary.deleteAll();
+    }
+
+    public WordCountDto calculateWordMetrics(Boolean includeProperNouns)
+    {
+        List<String> allWords;
+        if(includeProperNouns != null && includeProperNouns)
+        {
+            allWords = dictonary.selectAllProperNouns();
+        }
+        else{
+            allWords = dictonary.selectAllWords();
+        }
+
+       return wordCalculator.findWordMetrics(allWords);
     }
 }
