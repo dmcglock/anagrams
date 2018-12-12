@@ -9,7 +9,6 @@ public class WordsUtil {
 
     public static String sortLettersOfWord(String word)
     {
-        //TODO: Can you sort without converting to a char array?
         char[] wordChars = word.toCharArray();
         Arrays.sort(wordChars);
 

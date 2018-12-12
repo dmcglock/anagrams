@@ -31,13 +31,11 @@ public class DictionaryService {
         try(Stream<String> stream = Files.lines(Paths.get(PATH_TO_DICTIONARY_WORDS)))
         {
             List<String> dictionaryWords = stream.collect(Collectors.toList());
-            logger.info("Size of dictionary: {}", dictionaryWords.size());
             wordsService.addWordsToDictionary(dictionaryWords);
 
-
-            logger.info("Dictionary after processing: {}", dictionary.count());
+            logger.info("Dictionary words processed: {} out of {}", dictionary.count(), dictionaryWords.size());
         } catch (IOException e) {
-            logger.error("Trouble closing dictionary file with exception: {}", e);
+            logger.error("Trouble uploading dictionary: {}", e);
         }
     }
 }
