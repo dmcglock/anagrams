@@ -6,6 +6,7 @@ import com.doug.ibotta.words.vo.Word;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -14,14 +15,18 @@ public class WordsService {
     @Autowired
     Dictionary dictonary;
 
-    public void addWordsToDictionary(List<String> words)
+    public List<Word> addWordsToDictionary(List<String> words)
     {
+        List<Word> savedWords = new ArrayList<>();
         for(String word : words)
         {
 
             Word dictionaryWord = WordsUtil.generateDictionaryWord(word);
-            dictonary.save(dictionaryWord);
+            Word savedWord = dictonary.save(dictionaryWord);
+            savedWords.add(savedWord);
         }
+
+        return savedWords;
     }
 
     public void deleteWordFromDictionary(String word)

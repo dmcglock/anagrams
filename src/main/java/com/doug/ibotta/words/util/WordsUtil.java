@@ -18,8 +18,8 @@ public class WordsUtil {
     public static Word generateDictionaryWord(String word)
     {
         Word dictionaryWord = new Word();
-        String alpahabeticalLetters = sortLettersOfWord(word);
         dictionaryWord.setProperNoun(isWordProperNoun(word));
+        String alpahabeticalLetters = sortLettersOfWord(word);
         dictionaryWord.setWord(word);
         dictionaryWord.setWordAlphabetical(alpahabeticalLetters);
 

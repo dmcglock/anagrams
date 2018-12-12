@@ -13,8 +13,6 @@ public interface Dictionary extends CrudRepository<Word, Integer> {
 
     List<Word> findByWordAlphabeticalAndWordNotIn(String wordAlphabetical, String word);
 
-    List<Word> findFirstByWordAlphabeticalOrderByWordAlphabeticalDesc(String wordAlphabetical);
-
     @Transactional
     Long deleteByWord(String word);
 

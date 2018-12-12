@@ -47,12 +47,6 @@ public class AnagramService {
         dictionary.deleteByWordAlphabetical(alphabeticalWord);
     }
 
-    public List<Word> getMostCommonAnagram()
-    {
-        List<Word> mostCommonAnagrams = dictionary.findFirstByWordAlphabeticalOrderByWordAlphabeticalDesc("test");
-
-        return mostCommonAnagrams;
-    }
 
     private List<String> getProperNounAnagrams(List<Word> anagramWords, Integer limit)
     {

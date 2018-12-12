@@ -16,6 +16,9 @@ public class Word {
 
     private boolean isProperNoun;
 
+    public Word() {
+    }
+
     public String getWord() {
         return word;
     }

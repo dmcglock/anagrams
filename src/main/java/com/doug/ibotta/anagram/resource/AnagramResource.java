@@ -2,17 +2,9 @@ package com.doug.ibotta.anagram.resource;
 
 import com.doug.ibotta.anagram.dto.Anagram;
 import com.doug.ibotta.anagram.service.AnagramService;
-import com.doug.ibotta.words.vo.Word;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import java.util.List;
 
 @RestController
 @RequestMapping("/anagrams")
@@ -47,13 +39,5 @@ public class AnagramResource {
         anagramService.deleteWordAndAnagrams(word);
 
         return ResponseEntity.noContent().build();
-    }
-
-    @GetMapping("/mostCommon")
-    public ResponseEntity getMostCommonAnagram()
-    {
-        List<Word> wordsWithMostCommonAnagram = anagramService.getMostCommonAnagram();
-
-        return ResponseEntity.ok(wordsWithMostCommonAnagram);
     }
 }
