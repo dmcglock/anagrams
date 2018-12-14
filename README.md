@@ -122,7 +122,12 @@ Request: `localhost:3000/anagrams/read` <br/>
 Response: 204 No content
 
 
-##
+## Future
+Possible features for the future might include:
+* Allow words endpoint to take in sentences and check if sentences are anagrams
+* Delete all anagrams of size x
+
+Thanks for your consideration
 
 
 
