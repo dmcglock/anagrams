@@ -4,26 +4,26 @@ The purpose of this API is to perform fast searches for [anagrams](https://en.wi
 
 ## Getting Started
 
-####Clone the repository
+#### Clone the repository
 `https://github.com/dmcglock/anagrams.git`
 
-####Install Maven (if not already installed)
+#### Install Maven (if not already installed)
 [Maven install](https://maven.apache.org/install.html)
 
-####Navigate to project directory
+#### Navigate to project directory
 `<some directory>/anagrams`
 
-####Unit tests
+#### Unit tests
 You can choose to run the unit tests through `mvn clean install`
 
-####Start Spring Boot application
+#### Start Spring Boot application
 `mvn spring-boot:run` <br/>
 
-####Wait for dictionary to load
+#### Wait for dictionary to load
 After startup a log message will indicate `dictionary.txt` has been processed
 Example: `Dictionary words processed: 235886 out of 235886`
 
-####Run API Tests
+#### Run API Tests
 Make sure Ruby is installed <br/>
 Run `ruby anagram_test.rb` <br/>
 NOTE: Current version of tests does delete dictionary stored after start up
