@@ -7,6 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.xml.ws.Response;
+import java.util.List;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/anagrams")
 public class AnagramResource {
@@ -44,12 +48,22 @@ public class AnagramResource {
 
     @GetMapping("/check")
     public ResponseEntity getAnagramsCheck(
-            @RequestParam String wordOne,
-            @RequestParam String wordTwo
+            @RequestParam List<String> words
     )
     {
-        AnagramCheckerDto anagramCheckerDto = anagramService.checkIfWordsAreAnagrams(wordOne, wordTwo);
+        AnagramCheckerDto anagramCheckerDto = anagramService.checkIfWordsAreAnagrams(words);
 
         return ResponseEntity.ok(anagramCheckerDto);
     }
+
+    @GetMapping("/groups")
+    public ResponseEntity getAnagramGroupsBySize(
+            @RequestParam Integer size
+    )
+    {
+        Map<String, List<String>> anagramMap = anagramService.getAnagramGroupsBySize(size);
+
+        return ResponseEntity.ok(anagramMap);
+    }
+
 }
