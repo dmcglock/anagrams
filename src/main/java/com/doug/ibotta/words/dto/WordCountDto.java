@@ -1,11 +1,11 @@
 package com.doug.ibotta.words.dto;
 
 public class WordCountDto {
-    private Long wordCount;
-    private Integer minWordLength;
-    private Integer maxWordLength;
-    private Double medianWordLength;
-    private Double averageWordLength;
+    private Long wordCount = 0L;
+    private Integer minWordLength = 0;
+    private Integer maxWordLength = 0;
+    private Double medianWordLength = 0.0;
+    private Double averageWordLength = 0.0;
 
     public WordCountDto() {
     }

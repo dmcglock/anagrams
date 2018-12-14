@@ -2,6 +2,7 @@ package com.doug.ibotta.words.service;
 
 import com.doug.ibotta.words.dao.Dictionary;
 import com.doug.ibotta.words.dto.WordCountDto;
+import com.doug.ibotta.words.exception.EmptyDictionaryException;
 import com.doug.ibotta.words.util.WordCalculator;
 import com.doug.ibotta.words.util.WordsUtil;
 import com.doug.ibotta.words.vo.Word;
@@ -44,8 +45,7 @@ public class WordsService {
         dictonary.deleteAll();
     }
 
-    public WordCountDto calculateWordStatistics(Boolean includeProperNouns)
-    {
+    public WordCountDto calculateWordStatistics(Boolean includeProperNouns) throws EmptyDictionaryException {
         List<String> allWords;
         if(includeProperNouns != null && includeProperNouns)
         {
@@ -55,6 +55,10 @@ public class WordsService {
             allWords = dictonary.selectAllWords();
         }
 
+        if(allWords == null || allWords.isEmpty())
+        {
+            throw new EmptyDictionaryException("Dictionary was deleted!");
+        }
        return wordCalculator.findWordStatistics(allWords);
     }
 }
